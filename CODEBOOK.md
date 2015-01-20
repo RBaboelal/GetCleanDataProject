@@ -1,49 +1,39 @@
 # GetCleanDataProject
 Getting and Cleaning Data Course Project
 
-## Script used
-run_analysis.R
+# Data description 
 
-### Summary of script functionality
-This script runs on activity recognition datasets. The data has been caputured from the experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, they captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets (test and train), where 70% of the volunteers was selected for generating the training data and 30% the test data.
+### Filename: tidy_data_set.txt
 
-The script will do the following (in order):
-* Loading libraries
-* Reading proper names and labels (activity, variables) and processing
-* Reading test and train files
-* Combine test and train data into one data set
-* Select only mean() and std() columns (see below for more detail)
-* Calculate average of each variable for each activity and each subject
-* Rename into correct labels (for usability)
-* Write data set to file tidy_data_set.txt
+This data has been generated based on the data at:
+* https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
-### Usage of script
+Information about data:
+* The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually.
 
-* Script and input files must be in working directory
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
-The following input files are needed:
-* features.txt (for variable names)
-* activity_lables.txt (for activity labels)
-* X_test.txt (test data)
-* y_test.txt (test activity indicator)
-* subject_test.txt (test subject id)
-* X_train.txt (train data)
-* y_train.txt (train activity indicator)
-* subject_train.txt (train subject id)
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
 
-### Result description
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
 
-General
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+The set of variables that were estimated from these signals are: 
+* mean(): Mean value
+* std(): Standard deviation
+
+See more details about the variables (especially for the averaged values):
+* http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+
+### File content 
+
+General description
 * file contains header
 * file contains one observation per row (each uniquely identified by "Activity" and "Subject" identifiers)
 
-See more details about the variables:
-* http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
-
-Download data at:
-* https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
-
-columns in result file:
+columns in file:
 * "Activity" : enumerated (LAYING,STANDING,SITTING,WALKING_DOWNSTAIRS,WALKING_UPSTAIRS,WALKING)
 * "Subject"  : integer (1 to 30 identifying the 30 subjects)
 * "tBodyAcc-mean()-X" : float (averaged and grouped by activity and subject)
@@ -112,4 +102,7 @@ columns in result file:
 * "fBodyBodyGyroMag-std()" : float (averaged and grouped by activity and subject)
 * "fBodyBodyGyroJerkMag-mean()" : float (averaged and grouped by activity and subject)
 * "fBodyBodyGyroJerkMag-std()" : float (averaged and grouped by activity and subject)
+
+Acknowledgement:
+[1] Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine. International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012
 
